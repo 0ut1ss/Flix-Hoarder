@@ -23,7 +23,7 @@ export default class FlixSearch extends React.Component {
                 {this.state.error && <p>Please type a tv-show name...</p>}
                 <form onSubmit= {this.handleSearchSeries}>
                     <input type="text" name = "series" placeholder = "Type a tv-series name..." />
-                    <button>Find</button>
+                    <button>Flix</button>
                 </form>
             
             </div>
