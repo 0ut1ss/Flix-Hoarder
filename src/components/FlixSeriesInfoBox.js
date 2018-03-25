@@ -12,12 +12,18 @@ const FlixSeriesInfoBox = (props) => (
         {/*Popularity}*/}
         <h4>Popularity: <span>{props.series.popularity}</span></h4>
         {/*Genre}*/}
-        <h4>Genre: <span>TEST</span></h4>
-        <button>Hoard</button>
-        <button>Wishlist</button>
+        <h4>Genre: <span>{props.genres.map((genre,index) => (
+                props.series.genre_ids.includes(genre.id) &&<p>{genre.name}</p>
+            ))
+        }
+        </span></h4>
+        <button onClick = {() => props.handleAddSeries(props.series)}>Hoard</button>
+        <button onClick = {() => props.handleAddToWishList(props.series)}>Wishlist</button>
         <button>IMDB</button>
         <button>Share</button>
     </div>
+
 );
+
 
 export default FlixSeriesInfoBox;

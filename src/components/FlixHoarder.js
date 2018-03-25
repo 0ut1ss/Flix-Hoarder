@@ -6,8 +6,23 @@ import FlixSeriesWindow from './FlixSeriesWindow';
 export default class FlixHoarder extends React.Component {
     state = {
         series: series,
-        genres: genres
+        hoards: [],
+        wishlist: []
     };
+
+    handleAddSeries = (hoard) => {
+      this.setState(() => ({
+        options: this.state.hoards.push(hoard)
+      }));
+      console.log(hoard);
+    }
+
+    handleAddToWishList = (wish) => {
+      this.setState(() => ({
+        options: this.state.wishlist.push(wish)
+      }));
+      console.log(wish);
+    }
 
     handleSearchSeries = (seriesText) => {
         const apiKey = '8cec4af43f5c1727dbc905598ed2421d';
@@ -29,86 +44,31 @@ export default class FlixHoarder extends React.Component {
                 <FlixHeader subtitle = {subtitle}  />
                 <FlixSearch handleSearchSeries = {this.handleSearchSeries}/>
                 <FlixSeriesWindow series = {this.state.series}
+                                  genres = {this.allGenres}
+                                  handleAddSeries = {this.handleAddSeries}
+                                  handleAddToWishList = {this.handleAddToWishList}
                 />
             </div>
         );
     }
+
+      allGenres =  [{"id":28,"name":"Δράση"},{"id":12,"name":"Περιπέτεια"},{"id":16,"name":"Κινούμενα Σχέδια"},{"id":35,"name":"Κωμωδία"},{"id":80,"name":"Αστυνομική"},{"id":99,"name":"Ντοκυμαντέρ"},{"id":18,"name":"Δράμα"},{"id":10751,"name":"Οικογενειακή"},{"id":14,"name":"Φαντασίας"},{"id":36,"name":"Ιστορική"},{"id":27,"name":"Τρόμου"},{"id":10402,"name":"Μουσική"},{"id":9648,"name":"Μυστηρίου"},{"id":10749,"name":"Ρομαντική"},{"id":878,"name":"Επ. Φαντασίας"},{"id":10770,"name":"τηλεοπτική ταινία"},{"id":53,"name":"Θρίλερ"},{"id":10752,"name":"Πολεμική"},{"id":37,"name":"Western"}]
+
 }
 
 const series = {
-    original_name: "Lost",
+  original_name: "Lost",
 
-    poster_path: "/jyGspygDXJMydTOJj7iWNx9Elyd.jpg",
+  poster_path: "/jyGspygDXJMydTOJj7iWNx9Elyd.jpg",
 
-    overview: "Όλα ξεκινανε όταν το αεροπλάνο που εκτελούσε την πτήση Σίδνεϋ - Λος Αντζελες πέφτει σ''ενα νησι κάπου στον Ειρηνικό Ωκεανό. Τα άτομα τα οποια επιζούν απο την πτώση ειναι 48. Ανάμεσα τους ένας γιατρός, μια κατάδικος, ένας εκατομυριούχος, ενας τυχοδιώκτης, ένας Ιρακινός κομάντο, ένας περίεργος μεσήλικας, ένας ροκ σταρ, ένα ζευγαρι Κορεατών, 2 αδέρφια και αλλοι πολλοί.... Στην αρχή το νησί μοιάζει να είναι ήρεμο και οι επιζόντες πιστεύουν πως έχουν να αντιμετωπίσουν μόνο τα στοιχεία της φύσης... Αφού περνάνε οι μέρες και οι ελπίδες τους πως θα έρθει κάποιος να τους σώσει εξαφανίζονται τότε αποφασίζουν πως πρέπει μόνοι τους να βρουν τρόπο να φύγουν απο το νησί. Τίποτε δεν είναι αυτό που φαίνεται στο νησί το μόνο προφανές είναι ότι όλοι αυτοί οι άνθρωποι συνδέονται κατά κάποιον τρόπο κι ότι ο καθένας τους βρίσκεται εκεί για κάποιο συγκεκριμένο λόγο....",
+  overview: "Όλα ξεκινανε όταν το αεροπλάνο που εκτελούσε την πτήση Σίδνεϋ - Λος Αντζελες πέφτει σ''ενα νησι κάπου στον Ειρηνικό Ωκεανό. Τα άτομα τα οποια επιζούν απο την πτώση ειναι 48. Ανάμεσα τους ένας γιατρός, μια κατάδικος, ένας εκατομυριούχος, ενας τυχοδιώκτης, ένας Ιρακινός κομάντο, ένας περίεργος μεσήλικας, ένας ροκ σταρ, ένα ζευγαρι Κορεατών, 2 αδέρφια και αλλοι πολλοί.... Στην αρχή το νησί μοιάζει να είναι ήρεμο και οι επιζόντες πιστεύουν πως έχουν να αντιμετωπίσουν μόνο τα στοιχεία της φύσης... Αφού περνάνε οι μέρες και οι ελπίδες τους πως θα έρθει κάποιος να τους σώσει εξαφανίζονται τότε αποφασίζουν πως πρέπει μόνοι τους να βρουν τρόπο να φύγουν απο το νησί. Τίποτε δεν είναι αυτό που φαίνεται στο νησί το μόνο προφανές είναι ότι όλοι αυτοί οι άνθρωποι συνδέονται κατά κάποιον τρόπο κι ότι ο καθένας τους βρίσκεται εκεί για κάποιο συγκεκριμένο λόγο....",
 
-    first_air_date: "2004-09-22",
-    popularity: 61.523637
+  first_air_date: "2004-09-22",
+  popularity: 61.523637,
+  genre_ids: [10759,18,9648]
 };
 
-const genres =  [
-    {
-      "id": 10759,
-      "name": "Action & Adventure"
-    },
-    {
-      "id": 16,
-      "name": "Animation"
-    },
-    {
-      "id": 35,
-      "name": "Comedy"
-    },
-    {
-      "id": 80,
-      "name": "Crime"
-    },
-    {
-      "id": 99,
-      "name": "Documentary"
-    },
-    {
-      "id": 18,
-      "name": "Drama"
-    },
-    {
-      "id": 10751,
-      "name": "Family"
-    },
-    {
-      "id": 10762,
-      "name": "Kids"
-    },
-    {
-      "id": 9648,
-      "name": "Mystery"
-    },
-    {
-      "id": 10763,
-      "name": "News"
-    },
-    {
-      "id": 10764,
-      "name": "Reality"
-    },
-    {
-      "id": 10765,
-      "name": "Sci-Fi & Fantasy"
-    },
-    {
-      "id": 10766,
-      "name": "Soap"
-    },
-    {
-      "id": 10767,
-      "name": "Talk"
-    },
-    {
-      "id": 10768,
-      "name": "War & Politics"
-    },
-    {
-      "id": 37,
-      "name": "Western"
-    }
-  ]
+
+
+
+
