@@ -19,11 +19,15 @@ const FlixSeriesInfoBox = (props) => (
         </span></h4>
         <button onClick = {() => props.handleAddSeries(props.series)}>Hoard</button>
         <button onClick = {() => props.handleAddToWishList(props.series)}>Wishlist</button>
-        <button>IMDB</button>
-        <button>Share</button>
+        <button onClick = {() => props.handleExternalUrl(props.series.id, 'imdb')}>IMDB</button>
+        <button onClick = {() => props.handleExternalUrl(props.series.id, 'facebook')}>Facebook</button>
     </div>
 
 );
+
+FlixSeriesInfoBox.defaultProps = {
+    imdb: 'http://www.imdb.com/title/tt0411008/?ref_=nv_sr_1'
+}
 
 
 export default FlixSeriesInfoBox;

@@ -9,6 +9,7 @@ const FlixSeriesWindow = (props) => (
                             genres = {props.genres}
                             handleAddSeries = {props.handleAddSeries}
                             handleAddToWishList = {props.handleAddToWishList}
+                            handleExternalUrl = {props.handleExternalUrl}
         />
     </div>
 );
